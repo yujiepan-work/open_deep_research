@@ -119,7 +119,7 @@ class Configuration(BaseModel):
     )
     # Model Configuration
     summarization_model: str = Field(
-        default="openai:gpt-4.1-mini",
+        default="openai:gpt-4.1",
         metadata={
             "x_oap_ui_config": {
                 "type": "text",
