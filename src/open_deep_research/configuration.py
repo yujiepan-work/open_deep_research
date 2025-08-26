@@ -244,7 +244,9 @@ class Configuration(BaseModel):
             field_name: os.environ.get(field_name.upper(), configurable.get(field_name))
             for field_name in field_names
         }
-        return cls(**{k: v for k, v in values.items() if v is not None})
+        result = cls(**{k: v for k, v in values.items() if v is not None})
+        print(result)
+        return result
 
     class Config:
         """Pydantic configuration."""

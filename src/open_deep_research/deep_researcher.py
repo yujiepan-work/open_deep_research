@@ -1,6 +1,7 @@
 """Main LangGraph implementation for the Deep Research agent."""
 
 import asyncio
+import os
 from typing import Literal
 
 from langchain.chat_models import init_chat_model
@@ -55,7 +56,7 @@ from open_deep_research.utils import (
 # Initialize a configurable model that we will use throughout the agent
 configurable_model = init_chat_model(
     configurable_fields=("model", "max_tokens", "api_key"),
-    base_url='http://127.0.0.1:33400/v1',
+    base_url=os.environ.get("OPENAI_BASE_URL", None),
 )
 
 async def clarify_with_user(state: AgentState, config: RunnableConfig) -> Command[Literal["write_research_brief", "__end__"]]:
